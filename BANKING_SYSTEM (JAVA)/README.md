@@ -77,6 +77,12 @@ Design Patterns: Abstraction, Inheritance, and Encapsulation.
 
 <img width="313" height="216" alt="Screenshot 2026-04-15 161705" src="https://github.com/user-attachments/assets/c6b213d1-b7a4-43fc-a672-c965c6da4a55" />
 
+**Console Output**
+
+
+<img width="1113" height="685" alt="image" src="https://github.com/user-attachments/assets/a8d3f30c-f975-4069-ab29-ea4eca09be02" />
+
+
 
 **DB output:**
 
@@ -85,6 +91,7 @@ Design Patterns: Abstraction, Inheritance, and Encapsulation.
 
 
 <img width="1292" height="837" alt="Screenshot 2026-04-15 160617" src="https://github.com/user-attachments/assets/28cce830-aeb9-4eea-a8e6-32a9683c19ec" />
+
 
 
 Assigment by:
