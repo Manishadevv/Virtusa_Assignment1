@@ -87,7 +87,7 @@ Design Patterns: Abstraction, Inheritance, and Encapsulation.
 <img width="1292" height="837" alt="Screenshot 2026-04-15 160617" src="https://github.com/user-attachments/assets/28cce830-aeb9-4eea-a8e6-32a9683c19ec" />
 
 
-Assessment by:
+Assigment by:
 
 S.Manisha Devi 
 
