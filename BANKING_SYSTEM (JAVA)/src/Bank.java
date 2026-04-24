@@ -45,7 +45,6 @@ public class Bank {
             if (r.next()) {
                 String type = r.getString("acc_type") ;
                 if(type.equals("Savings") ) return new SavingsAccount(r.getString(1),r.getString(2),r.getDouble(3),username,password);
-                if(type.equals("Current"))  return new CurrentAccount(r.getString(1),r.getString(2),r.getDouble(3),username,password);
                 if(type.equals("Student"))  return new StudentAccount(r.getString(1),r.getString(2),r.getDouble(3),username,password);
             }
         } catch (Exception e) {
@@ -54,13 +53,36 @@ public class Bank {
 return null;
     }
 
-    public Accounts findbyaccnum (String account_num){
-        for(Accounts a : acclist){
-            if(a.getAccount_num().equals(account_num)){
-                return a;
+    public Accounts findbyaccnum (String accountnum) {
+        String sqlquery = "select * from accounts where account_num = ?";
+        try (Connection connect = DBconnectionUtil.getConnection();
+             PreparedStatement p = connect.prepareStatement(sqlquery)) {
+            p.setString(1, accountnum);
+            ResultSet r = p.executeQuery();
+
+            if (r.next()) {
+                String type = r.getString("acc_type");
+                if (type.equals("Savings")) {
+                    return new SavingsAccount(
+                            r.getString("account_num"),
+                            r.getString("name"),
+                            r.getDouble("balance"),
+                            r.getString("username"),
+                            r.getString("password")
+                    );
+                }else if (type.equals("Student")) {
+                    return new StudentAccount(
+                            r.getString("account_num"),
+                            r.getString("name"),
+                            r.getDouble("balance"),
+                            r.getString("username"),
+                            r.getString("password")
+                    );
+                }
             }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        System.out.println("no user found!");
         return null;
     }
 }
