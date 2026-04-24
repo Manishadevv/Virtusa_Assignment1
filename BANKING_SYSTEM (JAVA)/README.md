@@ -4,7 +4,7 @@
 
 **Key Features:**
 
-Account Diversification: Implements specific business rules for Savings, Current, and Student accounts using Object-Oriented principles.
+Account Diversification: Implements specific business rules for Savings and Student accounts using Object-Oriented principles.
   
 Persistent Storage: All user and transaction data is stored in a relational database, ensuring information is never lost after system shutdown.
   
@@ -61,7 +61,7 @@ Design Patterns: Abstraction, Inheritance, and Encapsulation.
     
     Accounts: The abstract core containing logic for financial calculations and SQL synchronization.
     
-    Savings/Current/StudentAccount: Specific implementations of withdrawal logic and limits.
+    Savings/StudentAccount: Specific implementations of withdrawal logic and limits.
     
     Main: The entry point providing an interactive menu-driven interface for the end-user.
     
