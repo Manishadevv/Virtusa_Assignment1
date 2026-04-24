@@ -80,7 +80,7 @@ public abstract class Accounts {
                 int rows = p.executeUpdate();
 
                 if(rows>0){
-                    this.balance += amount;
+                    this.balance -= amount;
                     System.out.println("Amount taken from your acc : Rs." +amount);
                     addTransaction("Withdraw" , amount);
                 }
@@ -92,16 +92,18 @@ public abstract class Accounts {
     public void transfer(Accounts otherAccount, double amount){
         if(amount <= 0){
             System.out.println("Amount should be greater than Rs.0 !");
-
-        }else if(amount > this.balance){
-            System.out.println("Insufficinet balance");
-
-        }else {
-            withdraw(amount);
-            otherAccount.deposit(amount);
-            System.out.println("Rs." + amount + " transferred to " +otherAccount.getName() +" Successfully!");
-            addTransaction("Transfer to "+ otherAccount.getName(), amount);
+            return;
         }
+        if(this.getBalance() < amount){
+            System.out.println("Insufficient balance");
+            return;
+        }
+        this.withdraw(amount);
+        otherAccount.deposit(amount);
+        addTransaction("Amount transferred", amount);
+        otherAccount.addTransaction("Amount Received", amount);
+
+        System.out.println("Transaction Success");
 
     }
 
@@ -110,7 +112,7 @@ public abstract class Accounts {
        try(Connection connect = DBconnectionUtil.getConnection();
        PreparedStatement p = connect.prepareStatement(sqlQuery)){
        p.setString(1,this.account_num);
-       p.setString(2,acc_type);
+       p.setString(2,type);
        p.setDouble(3,amount);
        p.setTimestamp(4, java.sql.Timestamp.valueOf(LocalDateTime.now()));
        p.executeUpdate();
