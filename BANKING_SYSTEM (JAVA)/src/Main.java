@@ -21,7 +21,7 @@ public class Main {
             String username = sc.nextLine();
             System.out.print("Enter password: ");
             String password = sc.nextLine();
-            System.out.print("Acc type(Savings/Current/Student): ");
+            System.out.print("Acc type(Savings/Student): ");
             String acc_type = sc.nextLine();
 
             b.createAccount(name, balance, username, password, acc_type);
@@ -53,10 +53,9 @@ public class Main {
                              System.out.print("Enter amount: ");
                              double amount = sc.nextDouble();
                              log_in.transfer(other_acc, amount);
-                         }else{
+                         }else {
                              System.out.println("Account not found!");
                          }
-
                     }else if(option == 4){
                         System.out.println();
                         System.out.println( "Current Balance: " + log_in.getBalance());
@@ -68,6 +67,8 @@ public class Main {
                         break;
                     }
                 }
+            }else{
+                System.out.println("Login Failed");
             }
         }else if(option == 3){
             break;
